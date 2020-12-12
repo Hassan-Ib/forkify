@@ -67,11 +67,12 @@ const controlPagination = goto => {
   paginationView.render(model.state.search);
 };
 
-const controlServings = () => {
+const controlServings = newServings => {
   //update the recipe servings
-  model.updateServings(6);
+  model.updateServings(newServings);
 
   //updating the _recipeView
+  recipeView.render(model.state.recipe);
 };
 const init = function () {
   //publisher subscriber pattern
@@ -79,6 +80,7 @@ const init = function () {
   recipeView.addHandlerRender(controlRecipes);
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerPagination(controlPagination);
+  recipeView.addHandlerUpdateServings(controlServings);
 };
 init();
 
