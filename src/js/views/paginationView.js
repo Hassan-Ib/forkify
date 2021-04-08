@@ -6,10 +6,10 @@ class PaginationView extends View {
 
   _generateMarkup() {
     const currentPage = this._data.page;
+    console.log('model.data.state.search >>>', this._data);
     const numPages = Math.ceil(
       this._data.results.length / this._data.resultsPerPage
     );
-    console.log(numPages);
 
     //page 1 and their are other pages
     if (currentPage === 1 && numPages > 1) {
@@ -57,7 +57,7 @@ class PaginationView extends View {
       if (!btn) return;
       console.log(btn);
       const gotoPage = +btn.dataset.goto;
-      console.log(gotoPage);
+      // console.log(gotoPage);
 
       handler(gotoPage);
     });

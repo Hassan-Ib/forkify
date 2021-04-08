@@ -105,7 +105,7 @@ class RecipeView extends View {
     this._parentElement.addEventListener('click', e => {
       const btn = e.target.closest('.btn--update-servings');
       if (!btn) return;
-      console.log('it');
+      // console.log('it');
       const { updateTo } = btn.dataset;
       // console.log(+btn.dataset.updateTo);
       handler(+updateTo);

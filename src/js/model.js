@@ -57,6 +57,11 @@ export const loadSearchResult = async query => {
   }
 };
 
+/**
+ * @param {int} currentPage
+ * @returns {Array} array of slice result for a page
+ */
+
 export const getSearchResultPage = (page = state.search.page) => {
   state.search.page = page;
   const start = (page - 1) * state.search.resultsPerPage;

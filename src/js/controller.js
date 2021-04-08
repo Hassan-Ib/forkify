@@ -50,10 +50,12 @@ const controlSearchResults = async () => {
 
     //4) render result to the Dom
     const { results } = model.state.search;
-    resultsView.render(model.getSearchResultPage());
+    const page = model.getSearchResultPage();
+    resultsView.render(page);
     //render intial pagination button
-    paginationView.render(model.state.search);
+    paginationView.render({ results, ...model.state.search });
   } catch (err) {
+    console.log(err);
     resultsView.renderError(err);
   }
 };
@@ -83,33 +85,3 @@ const init = function () {
   recipeView.addHandlerUpdateServings(controlServings);
 };
 init();
-
-//another method intead of using hashchange but hash change is better
-// using event propagation
-// resultList.addEventListener('click', e => {
-//   const id = e.target.id && e.target.id;
-//   console.log(id);
-//   controlRecipes(id);
-// });
-
-// let getLocation = () => {
-//   return new Promise((resolve, reject) => {
-//     // new Promises are you to TO CREATE PROMISES
-
-//     navigator.geolocation.getCurrentPosition(resolve, reject); // NAVIGATOR.GEOLOCATION.GETCURRENTPOSITION
-//   });
-// };
-
-// getLocation()
-//   .then(el => {
-//     console.log(el);
-//     let { latitude, longitude } = el.coords;
-//     console.log(latitude, longitude);
-//   })
-//   .catch(err => alert(err));
-
-// let whereAmI = async ()=> {
-//   const position = await getLocation();
-//   console.log(position)
-// }
-// whereAmI();
