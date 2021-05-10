@@ -13,6 +13,10 @@ export const state = {
   },
 };
 
+/**
+ * @param {string} query
+ * @returns {void} array of slice result for a page
+ */
 export const loadRecipe = async id => {
   try {
     const data = await getJSON(`${API_URL}${id}`);
@@ -37,6 +41,10 @@ export const loadRecipe = async id => {
     throw error;
   }
 };
+/**
+ * @param {string} query
+ * @returns {void} array of slice result for a page
+ */
 
 export const loadSearchResult = async query => {
   try {
@@ -69,10 +77,15 @@ export const getSearchResultPage = (page = state.search.page) => {
 
   return state.search.results.slice(start, end);
 };
+
+/**
+ * @param {int} newServings number of people to serve
+ * @returns {void} array of slice result for a page
+ */
 export const updateServings = newServings => {
   if (newServings < 1) return;
   state.recipe.ingredient.forEach(ing => {
-    console.log(ing.quantity);
+    // console.log(ing.quantity);
     ing.quantity = (ing.quantity * newServings) / state.recipe.servings;
   });
 

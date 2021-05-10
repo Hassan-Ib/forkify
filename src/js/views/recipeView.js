@@ -39,7 +39,7 @@ class RecipeView extends View {
             <span class="recipe__info-text">servings</span>
 
             <div class="recipe__info-buttons">
-              <button class="btn--tiny btn--update-servings data-update-to="${
+              <button class="btn--tiny btn--update-servings" data-update-to="${
                 this._data.servings - 1
               }">
                 <svg>
@@ -105,9 +105,8 @@ class RecipeView extends View {
     this._parentElement.addEventListener('click', e => {
       const btn = e.target.closest('.btn--update-servings');
       if (!btn) return;
-      // console.log('it');
       const { updateTo } = btn.dataset;
-      // console.log(+btn.dataset.updateTo);
+      console.log(+updateTo);
       handler(+updateTo);
     });
   }
